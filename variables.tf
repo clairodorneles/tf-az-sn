@@ -1,26 +1,18 @@
-## azure virtual network variables
+## azure subnet variables
+
+variable "listSubnets" {
+  type        = map(string)
+  description = "Map of subnet names to address prefixes. Default: none."
+  default     = {}
+}
 
 variable "vnetName" {
+  type        = string
   description = "Virtual Network Name"
-  type        = string
 }
 
-variable "vnetLocation" {
-  description = "Virtual Network Location"
-  type        = string
-}
 
-variable "vnetAddressSpace" {
-  description = "Virtual Network Address Space"
+variable "vnetRg" {
   type        = string
-}
-
-variable "vnetDnsServers" {
-  description = "Virtual Network DNS Server"
-  type        = string
-}
-
-variable "vnetTags" {
-  description = "Virtual Network Tags"
-  type        = map(string)
+  description = "Virtual Network Resource Group"
 }

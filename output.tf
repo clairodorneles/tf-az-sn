@@ -1,18 +1,11 @@
-## azure virtual network output
+## azure subnet output
 
-output "vnetName" {
-  value = azurerm_virtual_network.vnet.name
+output "subnet" {
+  value = {
+    for subnet, address_prefix in var.listSubnets :
+    subnet => {
+      name            = subnet
+      id              = azurerm_subnet.subnet[subnet].id
+      address_prefix  = address_prefix
+  }
 }
-
-output "vnetLocation" {
-  value = azurerm_virtual_network.vnet.location
-}
-
-output "vnetAddressSpace" {
-  value = azurerm_vritual_network.vnet.address_space 
-}
-
-output "vnetTags" {
-  value = azurerm_virtual_network.vnet.tags
-}
-
